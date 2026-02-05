@@ -56,7 +56,7 @@ To create your own puzzle, create a new `.txt` file inside `puzzles/` and follow
 - **Right side** of `|` contains the actual hint numbers (or `.` if none)
 
 ### Example 1
-
+```
 5 5
 
 .  .  |  .  .  1  .  .  
@@ -66,10 +66,11 @@ To create your own puzzle, create a new `.txt` file inside `puzzles/` and follow
 .  1  |  .  .  .  .  .  
 1  1  |  .  .  .  .  .  
 .  1  |  .  .  .  .  .  
-.  .  |  .  .  .  .  .  
+.  .  |  .  .  .  .  .
+```
 
 ### Example 2
-
+```
 5 5
 
       |  .  .  1  .  .  
@@ -81,7 +82,7 @@ To create your own puzzle, create a new `.txt` file inside `puzzles/` and follow
 .  1  | 
 .  .  |
 
-
+```
 ## Troubleshooting
 
 - **It reads the wrong puzzle:** make sure the first line of `puzzleName.txt` exactly matches a file inside `puzzles/` (including `.txt`).
