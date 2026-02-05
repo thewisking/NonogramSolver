@@ -1,24 +1,43 @@
-# C++ Project Starter Template
+# Nonogram Solver (C++)
 
-This is a little quick-start project template for C++ projects which utilise a Core/App project architecture. There are two included projects - one called _Core_, and one called _App_. [Premake](https://github.com/premake/premake-core) is used to generate project files.
+This solver reads a puzzle file from the `puzzles/` folder and prints the solved grid (or the current state if it can’t solve it).
 
-Core builds into a static library and is meant to contain common code intended for use in multiple applications. App builds into an executable and links the Core static library, as well as provides an include path to Core's code.
+## Pick which puzzle to run (puzzleName.txt)
 
-The `Scripts/` directory contains build scripts for Windows and Linux, and the `Vendor/` directory contains Premake binaries (currently version `5.0-beta2`).
+1. Open `puzzleName.txt`
+2. Put the puzzle filename on the **first line**, for example:
 
-## Getting Started
-1. Clone this repository or use the "Use this template" button on GitHub to quickly set up your own repository based on this template
-2. `App/` and `Core/` are the two projects - you can edit the names of these folders and their contents to suit
-3. The three included Premake build files are `Build.lua`, `Core/Build-Core.lua` and `App/Build-App.lua` - you can edit these to customise your build configurations, edit the names of your projects and workspace/solution, etc.
-4. Open the `Scripts/` directory and run the appropriate `Setup` script to generate projects files. You can edit the setup scripts to change the type of project that is generated - out of the box they are set to Visual Studio 2022 for Windows and gmake2 for Linux.
+   0003.txt
 
-Note that no macOS setup script is currently provided; you can duplicate the Linux script and adjust accordingly.
+3. Save the file.
 
-## Included
-- Some example code (in `App/Source` and `Core/Source`) to provide a starting point and test
-- Simple `.gitignore` to ignore project files and binaries
-- Premake binaries for Win/Mac/Linux (`v5.0-beta2`)
+On startup, the app reads the first line of `puzzleName.txt` and uses it as the puzzle file name.  
+If `puzzleName.txt` is missing/empty, it falls back to `0003.txt`.
 
-## License
-- UNLICENSE for this repository (see `UNLICENSE.txt` for more details)
-- Premake is licensed under BSD 3-Clause (see included LICENSE.txt file for more details)
+The puzzle is then loaded from:
+
+puzzles/<puzzleName>
+
+Example: `puzzles/0003.txt`
+
+### Important note about file paths (read this if it “can’t find” the file)
+
+`puzzleName.txt` is opened using a **relative path**, which means it’s resolved from the **working directory** (the folder you run the exe from), not from `app/app.cpp`.
+
+So:
+- If you run the program from the project root, the code should open `"puzzleName.txt"`.
+- If your code opens `"../puzzleName.txt"`, then you must run the program from inside the `app/` folder (or it will look one folder above the project and fail).
+
+## Build + run (Windows)
+
+If you have MinGW/MSYS2 `g++` installed:
+
+- Double-click `runSolver.bat`
+
+That script builds everything and runs the solver from the project root.
+
+## Troubleshooting
+
+- **It reads the wrong puzzle:** make sure the first line of `puzzleName.txt` exactly matches a file inside `puzzles/` (including `.txt`).
+- **It can’t open puzzleName.txt:** you’re running the exe from a different working directory than you think. Run it from the project root (or adjust the path in code).
+- **It can’t read the puzzle file:** confirm `puzzles/<name>` exists and the filename matches exactly.
