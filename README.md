@@ -36,6 +36,52 @@ If you have MinGW/MSYS2 `g++` installed:
 
 That script builds everything and runs the solver from the project root.
 
+## Create your own puzzle
+
+To create your own puzzle, create a new `.txt` file inside `puzzles/` and follow these rules:
+
+- The **first line** contains the number of **rows** and **columns** (in that order), separated by a space.  
+  Example:
+  10 10
+- After the first line, you must provide:
+- **Exactly `rows` lines** of **row hints**
+- Then **exactly `columns` lines** of **column hints**
+
+- Each hint entry is separated by spaces.
+- Hints are **numbers** (e.g. `3`, `12`) — not separate digits.
+- Use `.` to represent **no hint** (an empty hint list).
+
+- Every hint line must contain a `|` separator:
+- **Left side** of `|` is padding/blank hint slots (usually `.`)
+- **Right side** of `|` contains the actual hint numbers (or `.` if none)
+
+### Example 1
+
+5 5
+
+.  .  |  .  .  1  .  .  
+.  .  |  .  1  1  1  .  
+------+-----------------
+.  .  |  .  .  .  .  .  
+.  1  |  .  .  .  .  .  
+1  1  |  .  .  .  .  .  
+.  1  |  .  .  .  .  .  
+.  .  |  .  .  .  .  .  
+
+### Example 2
+
+5 5
+
+      |  .  .  1  .  .  
+      |  .  1  1  1  .  
+------+-----------------
+.  .  | 
+.  1  |  
+1  1  | 
+.  1  | 
+.  .  |
+
+
 ## Troubleshooting
 
 - **It reads the wrong puzzle:** make sure the first line of `puzzleName.txt` exactly matches a file inside `puzzles/` (including `.txt`).
