@@ -1,6 +1,8 @@
 # Directories
 .vs/
 Binaries/
+.vscode/
+
 
 # Files
 *.vcxproj
@@ -8,7 +10,9 @@ Binaries/
 *.vcxproj.filters
 *.sln
 *.log
+*.exe
 Makefile
+tempCodeRunnerFile.cpp
 
 # Exclude
 !Vendor/Binaries
