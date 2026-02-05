@@ -26,7 +26,7 @@ int main() {
     std::vector<int> OH_YEAH_VECTOR;
     std::string puzzle_name = "0003.txt";
 
-    std::ifstream in("../puzzleName.txt");
+    std::ifstream in("puzzleName.txt");
     if (in) {
         std::string line;
         if (std::getline(in, line) && !line.empty())
